@@ -18,7 +18,11 @@ public class TaskController {
     
     private final TaskService taskService;
     
-    @GetMapping
+    @GetMapping("/")
+    public String hello() {
+        return "Hello, Task API is running!";
+    }
+    @GetMapping("/get")
     public List<TaskDTO> getAllTasks() {
         return taskService.getAllTasks();
     }
@@ -35,7 +39,7 @@ public class TaskController {
         return taskService.getTasksByStatus(status);
     }
     
-    @PostMapping
+    @PostMapping("/create")
     public TaskDTO createTask(@RequestBody CreateTaskDTO task) {
         return taskService.createTask(task);
     }
